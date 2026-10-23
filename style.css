@@ -34,8 +34,8 @@
     radial-gradient(50% 60% at 20% 80%, rgba(205, 101, 67, .25), transparent 70%),
     linear-gradient(160deg, #fcf6f4 0%, #e6dcce 100%);
 
-  --fonte: "Plus Jakarta Sans", -apple-system, "Segoe UI", sans-serif;
-  --fonte-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;   /* dados nos painéis */
+  --fonte: "Geist", -apple-system, "Segoe UI", sans-serif;
+  --fonte-mono: "Geist Mono", ui-monospace, Menlo, monospace;   /* dados nos painéis */
   --fonte-pixel: "Courier Prime", ui-monospace, monospace;          /* marca e rótulos */
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-saida: cubic-bezier(0.16, 1, 0.3, 1);

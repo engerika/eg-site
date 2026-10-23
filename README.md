@@ -25,12 +25,13 @@ Basta salvar com o nome certo; não precisa mexer no código.
 |---|---|---|
 | `assets/img/hero.jpg` | fundo do topo | horizontal, ≥ 2400 px de largura |
 | `assets/video/hero.mp4` | por cima do fundo, em loop | sem som, 10–20 s, até ~6 MB |
-| `assets/img/servico-reforma.jpg` | cartão Reforma | vertical 4:5 |
-| `assets/img/servico-projeto.jpg` | cartão Projeto | vertical 4:5 |
-| `assets/img/servico-obra.jpg` | cartão Obra | vertical 4:5 |
-| `assets/img/servico-credito.jpg` | cartão Crédito | vertical 4:5 |
-| `assets/img/etapa-01.jpg` … `etapa-04.jpg` | cartões de Como trabalhamos | horizontal ou quadrada; o pé some no branco |
+| `assets/img/bim.jpg` | cartão grande "Projeto BIM 3D" | horizontal; o objeto no terço de baixo |
+| `assets/img/servico-reforma.jpg`, `-projeto`, `-obra`, `-credito` | cartões de Serviços | horizontal; some para a esquerda |
+| `assets/img/etapa-01.jpg` … `etapa-04.jpg` | Como trabalhamos | horizontal; o pé some no branco |
+| `assets/img/modelo.jpg` | bloco "Projeto 3D", com cartões de vidro | horizontal, ≥ 2000 px |
+| `assets/img/acompanhamento-fotos.jpg` | slide "Fotos" da Área do Cliente | 16:9 |
 | `assets/img/sobre.jpg` | bloco Sobre | vertical 4:5 |
+| `assets/img/contato.jpg` | fundo do contato, preso ao pé | horizontal |
 
 JPG até ~400 KB cada (o GitHub Pages não comprime). O vídeo não carrega para
 quem pediu menos movimento ou economia de dados no aparelho.

@@ -9,253 +9,394 @@
 <link rel="icon" type="image/png" href="assets/marca/simbolo-cor.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=IBM+Plex+Mono:wght@400;500&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" />
 <link rel="stylesheet" href="style.css" />
 <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
-<!-- Abertura: as letras da marca entram desfocadas e saem. Uma vez por sessão; some com movimento reduzido. -->
+<!-- ABERTURA — letras ocupam a largura da tela, entram desfocadas, saem, e a
+     cortina sobe revelando o hero. Uma vez por sessão; some com movimento reduzido. -->
 <div class="intro" aria-hidden="true">
-  <div class="intro-marca">
-    <span>E</span><span>G</span><span class="intro-sep"></span><span>E</span><span>N</span><span>G</span><span>E</span><span>N</span><span>H</span><span>A</span><span>R</span><span>I</span><span>A</span>
-  </div>
+  <div class="intro-cortina"></div>
+  <div class="intro-marca"><span>E</span><span>G</span><span>E</span><span>N</span><span>H</span><span>A</span><span>R</span><span>I</span><span>A</span></div>
 </div>
 
-<header class="nav" id="topo">
+<header class="nav">
   <a href="#inicio" class="nav-marca">
-    <img src="assets/marca/simbolo-preto.png" alt="" width="28" height="28" />
+    <img src="assets/marca/simbolo-preto.png" alt="" width="22" height="22" />
     <span>EG Engenharia</span>
   </a>
   <nav class="nav-links" id="menu" aria-label="Principal">
     <a href="#servicos">Serviços</a>
     <a href="#processo">Como trabalhamos</a>
+    <a href="#acompanhamento">Acompanhamento</a>
     <a href="#ferramentas">Simuladores</a>
     <a href="#sobre">Sobre</a>
-    <a href="#area-cliente">Área do Cliente</a>
     <a href="#contato" class="nav-links-cta">Fale conosco</a>
   </nav>
-  <a href="#contato" class="btn btn-escuro nav-cta">Fale conosco</a>
+  <a href="#contato" class="btn btn-contorno nav-cta">Fale conosco</a>
   <button class="nav-abrir" aria-controls="menu" aria-expanded="false" aria-label="Abrir menu">
-    <span></span><span></span>
+    <span></span><span></span><span></span>
   </button>
 </header>
 
 <main>
-  <!-- HERO — imagem: assets/img/hero.jpg (render ou foto de obra, horizontal, ≥2400px).
-       Vídeo opcional por cima: assets/video/hero.mp4 (sem som, em loop, 10–20 s, até ~6 MB).
-       Sem o arquivo, ou com movimento reduzido / economia de dados, fica só a imagem. -->
+  <!-- HERO — imagem: assets/img/hero.jpg (horizontal, ≥2400 px).
+       Vídeo opcional por cima: assets/video/hero.mp4 (sem som, em loop, 10–20 s, até ~6 MB). -->
   <section class="hero" id="inicio">
-    <div class="hero-img img" style="--img: url('assets/img/hero.jpg')" role="img" aria-label="Projeto da EG Engenharia">
+    <div class="hero-midia img" style="--img: url('assets/img/hero.jpg')" role="img" aria-label="Projeto da EG Engenharia">
       <video class="hero-video" data-src="assets/video/hero.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
     </div>
+    <div class="hero-veu" aria-hidden="true"></div>
+    <div class="hero-desfoque d1" aria-hidden="true"></div>
+    <div class="hero-desfoque d2" aria-hidden="true"></div>
+    <div class="hero-desfoque d3" aria-hidden="true"></div>
     <div class="hero-conteudo">
-      <p class="selo revelar">Tecnologia e Engenharia</p>
-      <h1 class="revelar">A confiança que você precisa com a <em>excelência</em> que você merece.</h1>
-      <p class="hero-sub revelar">Reforma, projeto BIM, obra e crédito para construir — do primeiro estudo à entrega das chaves.</p>
-      <div class="hero-acoes revelar">
-        <a href="#contato" class="btn btn-escuro">Entre em contato</a>
-        <a href="#servicos" class="btn btn-vidro">Ver serviços</a>
-      </div>
-      <!-- EDITAR: números reais. data-falta marca o que ainda não foi informado. -->
-      <dl class="numeros revelar">
-        <div><dt>Obras entregues</dt><dd data-falta>—</dd></div>
-        <div><dt>m² projetados</dt><dd data-falta>—</dd></div>
-        <div><dt>Anos de mercado</dt><dd data-falta>—</dd></div>
+      <h1 class="hero-titulo">A confiança que você precisa com a <em>excelência</em> que você merece.</h1>
+      <!-- EDITAR: números reais (data-ate = número final do contador; data-sufixo = "+", "%"…). -->
+      <dl class="numeros">
+        <div><dd data-ate="" data-sufixo="+">—</dd><dt>Obras entregues</dt></div>
+        <div><dd data-ate="" data-sufixo="">—</dd><dt>m² projetados</dt></div>
+        <div><dd data-ate="" data-sufixo="">—</dd><dt>Anos de mercado</dt></div>
       </dl>
     </div>
   </section>
 
-  <!-- SERVIÇOS — imagens: assets/img/servico-reforma.jpg, -projeto.jpg, -obra.jpg, -credito.jpg (verticais 4:5) -->
-  <section class="secao" id="servicos">
-    <div class="secao-cabeca">
-      <canvas class="pixel revelar" data-desenho="predio" width="80" height="80" aria-hidden="true"></canvas>
-        <p class="selo revelar">Serviços</p>
-      <h2 class="revelar">Da documentação<br />às chaves na mão.</h2>
+  <!-- DIFERENCIAIS (bento) — imagem do cartão grande: assets/img/bim.jpg (o modelo, objetos no terço de baixo). -->
+  <section class="secao secao-primeira" id="diferenciais">
+    <div class="cabeca">
+      <canvas class="pixel" data-desenho="grade" aria-hidden="true"></canvas>
+      <p class="selo">Engenharia e tecnologia</p>
+      <h2 class="palavras">Tudo o que a sua obra precisa, num só lugar.</h2>
     </div>
-    <div class="servicos">
-      <article class="servico">
-        <div class="servico-img img" style="--img: url('assets/img/servico-reforma.jpg')"></div>
-        <div class="servico-texto">
-          <p class="servico-rotulo">Reforma</p>
-          <h3>Sua reforma</h3>
-          <p>ART e documentação para a sua reforma completa, dentro das normas.</p>
+    <div class="bento" data-brilho>
+      <article class="bento-cartao bento-grande revelar">
+        <div class="bento-fundo img" style="--img: url('assets/img/bim.jpg')"></div>
+        <div class="bento-desfoque" aria-hidden="true"></div>
+        <div class="bento-veu" aria-hidden="true"></div>
+        <div class="bento-conteudo">
+          <span class="icone icone-vidro" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="M3 7l9 5 9-5M12 12v10"/></svg></span>
+          <h3>Projeto BIM 3D</h3>
+          <p>A obra construída primeiro no computador: quantidades, custos e conflitos resolvidos antes do primeiro tijolo.</p>
         </div>
       </article>
-      <article class="servico">
-        <div class="servico-img img" style="--img: url('assets/img/servico-projeto.jpg')"></div>
-        <div class="servico-texto">
-          <p class="servico-rotulo">Projeto</p>
-          <h3>Seu projeto</h3>
-          <p>Projetos BIM 3D realistas, precisos, integrados e otimizados.</p>
-        </div>
+      <article class="bento-cartao revelar">
+        <span class="icone" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
+        <h3>Acompanhamento diário</h3>
+        <p>Diário de obra, fotos e cronograma atualizados pela equipe e abertos para você.</p>
       </article>
-      <article class="servico">
-        <div class="servico-img img" style="--img: url('assets/img/servico-obra.jpg')"></div>
-        <div class="servico-texto">
-          <p class="servico-rotulo">Obra</p>
-          <h3>Sua obra</h3>
-          <p>Construímos desde a concepção até a entrega das chaves.</p>
-        </div>
+      <article class="bento-cartao revelar">
+        <span class="icone" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10h8M8 14h5"/></svg></span>
+        <h3>Custo sob controle</h3>
+        <p>Orçamento por quantidades do projeto, comparado com o realizado a cada medição.</p>
       </article>
-      <article class="servico">
-        <div class="servico-img img" style="--img: url('assets/img/servico-credito.jpg')"></div>
-        <div class="servico-texto">
-          <p class="servico-rotulo">Crédito</p>
-          <h3>Seu crédito</h3>
-          <p>Como construtor do MCF, oferecemos opções de crédito para a sua obra.</p>
-        </div>
+      <article class="bento-cartao revelar">
+        <span class="icone" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+        <h3>Documentação em dia</h3>
+        <p>ART, projetos e documentos da obra regularizados e guardados com você.</p>
       </article>
     </div>
   </section>
 
-  <!-- COMO TRABALHAMOS — EDITAR: texto proposto, a revisar. -->
-  <section class="secao secao-clara" id="processo">
-    <div class="secao-cabeca">
-      <canvas class="pixel revelar" data-desenho="escada" width="80" height="80" aria-hidden="true"></canvas>
-        <p class="selo revelar">Como trabalhamos</p>
-      <h2 class="revelar">Da ideia à obra pronta<br />em quatro etapas.</h2>
+  <!-- SERVIÇOS — cartões que empilham no scroll.
+       Imagens: assets/img/servico-reforma.jpg, -projeto.jpg, -obra.jpg, -credito.jpg -->
+  <section class="secao" id="servicos">
+    <div class="cabeca cabeca-lado">
+      <div>
+        <canvas class="pixel" data-desenho="predio" aria-hidden="true"></canvas>
+        <p class="selo">Serviços</p>
+        <h2 class="palavras">Da documentação às chaves na mão.</h2>
+      </div>
+      <p class="cabeca-texto">Reforma, projeto, obra e crédito — tudo com a mesma equipe, do primeiro estudo à entrega.</p>
     </div>
-    <!-- Imagens: assets/img/etapa-01.jpg … etapa-04.jpg (quadradas ou horizontais). -->
-    <ol class="etapas">
-      <li class="etapa revelar">
-        <div class="etapa-img img" style="--img: url('assets/img/etapa-01.jpg')"></div>
-        <span class="etapa-n">01</span>
-        <div class="etapa-texto"><h3>Diagnóstico</h3><p>Entendemos o que você quer, o terreno ou imóvel, o prazo e o orçamento.</p></div>
-      </li>
-      <li class="etapa revelar">
-        <div class="etapa-img img" style="--img: url('assets/img/etapa-02.jpg')"></div>
-        <span class="etapa-n">02</span>
-        <div class="etapa-texto"><h3>Projeto</h3><p>Modelo BIM 3D com quantidades e custos antes do primeiro tijolo.</p></div>
-      </li>
-      <li class="etapa revelar">
-        <div class="etapa-img img" style="--img: url('assets/img/etapa-03.jpg')"></div>
-        <span class="etapa-n">03</span>
-        <div class="etapa-texto"><h3>Obra</h3><p>Execução com diário de obra, cronograma e orçamento acompanhados.</p></div>
-      </li>
-      <li class="etapa revelar">
-        <div class="etapa-img img" style="--img: url('assets/img/etapa-04.jpg')"></div>
-        <span class="etapa-n">04</span>
-        <div class="etapa-texto"><h3>Entrega</h3><p>Documentação, vistoria e as chaves na sua mão.</p></div>
-      </li>
+    <div class="servicos">
+      <div class="servico-pilha"><article class="servico">
+        <div class="servico-img img" style="--img: url('assets/img/servico-reforma.jpg')"></div>
+        <div class="servico-texto">
+          <p class="selo">Reforma</p>
+          <h3>Sua reforma</h3>
+          <p>ART e documentação para a sua reforma completa, dentro das normas.</p>
+          <dl class="servico-dados"><div><dd>ART</dd><dt>responsável técnico</dt></div><div><dd>NBR</dd><dt>dentro das normas</dt></div></dl>
+        </div>
+      </article></div>
+      <div class="servico-pilha"><article class="servico">
+        <div class="servico-img img" style="--img: url('assets/img/servico-projeto.jpg')"></div>
+        <div class="servico-texto">
+          <p class="selo">Projeto</p>
+          <h3>Seu projeto</h3>
+          <p>Projetos BIM 3D realistas, precisos, integrados e otimizados.</p>
+          <dl class="servico-dados"><div><dd>3D</dd><dt>modelo navegável</dt></div><div><dd>BIM</dd><dt>quantidades do modelo</dt></div></dl>
+        </div>
+      </article></div>
+      <div class="servico-pilha"><article class="servico">
+        <div class="servico-img img" style="--img: url('assets/img/servico-obra.jpg')"></div>
+        <div class="servico-texto">
+          <p class="selo">Obra</p>
+          <h3>Sua obra</h3>
+          <p>Construímos desde a concepção até a entrega das chaves.</p>
+          <dl class="servico-dados"><div><dd>Diário</dd><dt>registro todo dia</dt></div><div><dd>Chaves</dd><dt>até a entrega</dt></div></dl>
+        </div>
+      </article></div>
+      <div class="servico-pilha"><article class="servico">
+        <div class="servico-img img" style="--img: url('assets/img/servico-credito.jpg')"></div>
+        <div class="servico-texto">
+          <p class="selo">Crédito</p>
+          <h3>Seu crédito</h3>
+          <p>Como construtor do MCF, oferecemos opções de crédito para a sua obra.</p>
+          <dl class="servico-dados"><div><dd>MCF</dd><dt>construtor credenciado</dt></div><div><dd>Simule</dd><dt>antes de decidir</dt></div></dl>
+        </div>
+      </article></div>
+    </div>
+  </section>
+
+  <!-- COMO TRABALHAMOS — EDITAR: texto proposto, a revisar.
+       Imagens: assets/img/etapa-01.jpg … etapa-04.jpg -->
+  <section class="secao" id="processo">
+    <div class="cabeca">
+      <canvas class="pixel" data-desenho="escada" aria-hidden="true"></canvas>
+      <p class="selo">Como trabalhamos</p>
+      <h2 class="palavras">Da ideia à obra pronta em quatro etapas.</h2>
+    </div>
+    <ol class="etapas" data-brilho>
+      <li class="etapa revelar"><div class="etapa-img img" style="--img: url('assets/img/etapa-01.jpg')"></div><span class="mono etapa-n">01</span><div class="etapa-texto"><h3>Diagnóstico</h3><p>Entendemos o que você quer, o terreno ou imóvel, o prazo e o orçamento.</p></div></li>
+      <li class="etapa revelar"><div class="etapa-img img" style="--img: url('assets/img/etapa-02.jpg')"></div><span class="mono etapa-n">02</span><div class="etapa-texto"><h3>Projeto</h3><p>Modelo BIM 3D com quantidades e custos antes do primeiro tijolo.</p></div></li>
+      <li class="etapa revelar"><div class="etapa-img img" style="--img: url('assets/img/etapa-03.jpg')"></div><span class="mono etapa-n">03</span><div class="etapa-texto"><h3>Obra</h3><p>Execução com diário de obra, cronograma e orçamento acompanhados.</p></div></li>
+      <li class="etapa revelar"><div class="etapa-img img" style="--img: url('assets/img/etapa-04.jpg')"></div><span class="mono etapa-n">04</span><div class="etapa-texto"><h3>Entrega</h3><p>Documentação, vistoria e as chaves na sua mão.</p></div></li>
     </ol>
   </section>
 
-  <!-- SIMULADORES (isca de leads), ainda sem lógica: apontam para o contato. -->
-  <section class="secao" id="ferramentas">
-    <div class="secao-cabeca secao-cabeca-lado">
+  <!-- MODELO 3D — imagem grande com cartões de vidro por cima.
+       Imagem: assets/img/modelo.jpg (render do modelo, horizontal). -->
+  <section class="secao" id="modelo">
+    <div class="cabeca cabeca-lado">
       <div>
-        <canvas class="pixel revelar" data-desenho="grade" width="80" height="80" aria-hidden="true"></canvas>
-        <p class="selo revelar">Simuladores</p>
-        <h2 class="revelar">Faça as contas<br />antes de começar.</h2>
+        <canvas class="pixel" data-desenho="planta" aria-hidden="true"></canvas>
+        <p class="selo">Projeto 3D</p>
+        <h2 class="palavras">Veja a obra pronta antes de começar.</h2>
       </div>
-      <p class="secao-texto revelar">Orçamentos, estimativas e financiamento — conheça nossos simuladores online.</p>
+      <p class="cabeca-texto">O modelo do seu projeto aberto no navegador: gire, entre nos cômodos, meça e comente.</p>
     </div>
-    <div class="cartoes">
-      <a href="#contato" class="cartao revelar">
-        <span class="cartao-n">01</span>
-        <h3>Calculadora de materiais</h3>
-        <p>Saiba quanto comprar de material para a sua obra.</p>
-        <span class="cartao-cta">Em breve <span aria-hidden="true">→</span></span>
-      </a>
-      <a href="#contato" class="cartao revelar">
-        <span class="cartao-n">02</span>
-        <h3>Orçamento de projetos</h3>
-        <p>Estimativa de custos para projetos executivos e de coordenação.</p>
-        <span class="cartao-cta">Em breve <span aria-hidden="true">→</span></span>
-      </a>
-      <a href="#contato" class="cartao revelar">
-        <span class="cartao-n">03</span>
-        <h3>Construção financiada</h3>
-        <p>Quanto custaria a casa que você deseja, em poucos cliques.</p>
-        <span class="cartao-cta">Em breve <span aria-hidden="true">→</span></span>
-      </a>
+    <div class="vidro-bloco revelar">
+      <div class="vidro-img img" style="--img: url('assets/img/modelo.jpg')" role="img" aria-label="Modelo 3D de um projeto"></div>
+      <div class="vidro-cartoes">
+        <div class="vidro-cartao">
+          <p class="selo">Visualizador 3D</p>
+          <h3>Seu projeto em 3D</h3>
+          <p>Plantas, cortes e o modelo inteiro, no celular ou no computador.</p>
+          <div class="vidro-codigo"><span>planta · térreo</span><br />área útil <b>142,6 m²</b><br />cômodos <b>9</b></div>
+        </div>
+        <div class="vidro-cartao">
+          <p class="vivo"><i aria-hidden="true"></i>Atualizado com a obra</p>
+          <p>Marcações e comentários feitos direto na planta, com cada documento no lugar dele.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- SOBRE — EDITAR: texto real. Imagem: assets/img/sobre.jpg (retrato ou obra, vertical) -->
-  <section class="secao secao-escura" id="sobre">
-    <div class="sobre">
-      <div class="sobre-img img revelar" style="--img: url('assets/img/sobre.jpg')"></div>
-      <div class="sobre-texto">
-        <canvas class="pixel revelar" data-desenho="predio" width="80" height="80" aria-hidden="true"></canvas>
-        <p class="selo selo-escuro revelar">Sobre</p>
-        <h2 class="revelar">Engenharia com precisão, <em>do estudo à entrega</em>.</h2>
-        <p class="revelar">Descreva aqui, em algumas linhas, sua trajetória, especialidades e o que diferencia seu trabalho em engenharia e tecnologia aplicada à construção.</p>
+  <!-- TRANSPARÊNCIA — texto e lista à esquerda; registro (exemplo) à direita. -->
+  <section class="secao" id="transparencia">
+    <div class="cabeca">
+      <canvas class="pixel" data-desenho="grade" aria-hidden="true"></canvas>
+      <p class="selo">Transparência</p>
+      <h2 class="palavras">Tudo registrado, do primeiro dia à entrega.</h2>
+    </div>
+    <div class="assimetrico">
+      <div>
+        <p class="cabeca-texto sem-margem">Cada serviço, compra e pagamento fica registrado — você sabe o que foi feito, quando e por quanto.</p>
         <ul class="lista-barra">
-          <li class="revelar"><strong>Projetos BIM 3D</strong><span>Realistas, precisos, integrados e otimizados.</span></li>
-          <li class="revelar"><strong>ART e documentação</strong><span>Reforma regularizada, dentro das normas.</span></li>
-          <li class="revelar"><strong>Construtor do MCF</strong><span>Opções de crédito para a sua obra.</span></li>
+          <li><strong>Diário de obra</strong><span>Serviços, equipe e clima, dia a dia</span></li>
+          <li><strong>Fotos datadas</strong><span>Cada etapa documentada no lugar certo</span></li>
+          <li><strong>Financeiro aberto</strong><span>Previsto, pago e a pagar, por etapa</span></li>
+        </ul>
+        <ul class="lista-pontos"><li>ART</li><li>Projeto aprovado</li><li>Diário assinado</li><li>Termo de entrega</li></ul>
+      </div>
+      <div class="registro revelar">
+        <div class="registro-topo"><span class="mono">Registro da obra</span><span class="mono">Exemplo</span></div>
+        <ul class="registro-linhas">
+          <li><time>07:12</time><span>equipe chegou · 8 pessoas</span><i></i></li>
+          <li><time>08:40</time><span>concreto entregue · NF anexada</span><i></i></li>
+          <li><time>11:05</time><span>laje concretada · 32 fotos</span><i></i></li>
+          <li><time>15:30</time><span>pagamento programado · fornecedor</span><i></i></li>
+          <li><time>17:02</time><span>diário fechado · engenheira</span><i></i></li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- ÁREA DO CLIENTE e SISTEMAS — EDITAR: links reais. -->
-  <section class="secao" id="area-cliente">
-    <div class="secao-cabeca secao-cabeca-lado">
-      <div>
-        <canvas class="pixel revelar" data-desenho="planta" width="80" height="80" aria-hidden="true"></canvas>
-        <p class="selo revelar">Área do Cliente</p>
-        <h2 class="revelar">Sua obra<br />em um só lugar.</h2>
+  <!-- ACOMPANHAMENTO — a lista alterna sozinha e o painel troca junto (dados de exemplo).
+       Imagem do slide "Fotos": assets/img/acompanhamento-fotos.jpg -->
+  <section class="secao" id="acompanhamento">
+    <div class="cabeca">
+      <canvas class="pixel" data-desenho="planta" aria-hidden="true"></canvas>
+      <p class="selo">Área do Cliente</p>
+      <h2 class="palavras">Sua obra no seu celular. Todo dia.</h2>
+    </div>
+    <div class="vitrine" data-vitrine>
+      <div class="vitrine-lista" role="tablist" aria-label="O que você acompanha">
+        <button class="vitrine-item" role="tab" aria-selected="true" aria-controls="painel-1" id="aba-1"><span class="vitrine-n">01</span><span><strong>Diário de obra</strong><small>O que foi feito, clima e equipe</small></span></button>
+        <button class="vitrine-item" role="tab" aria-selected="false" aria-controls="painel-2" id="aba-2" tabindex="-1"><span class="vitrine-n">02</span><span><strong>Fotos e medições</strong><small>A obra vista de perto, por etapa</small></span></button>
+        <button class="vitrine-item" role="tab" aria-selected="false" aria-controls="painel-3" id="aba-3" tabindex="-1"><span class="vitrine-n">03</span><span><strong>Cronograma</strong><small>Onde a obra está e o que vem</small></span></button>
+        <button class="vitrine-item" role="tab" aria-selected="false" aria-controls="painel-4" id="aba-4" tabindex="-1"><span class="vitrine-n">04</span><span><strong>Financeiro</strong><small>Previsto, pago e a pagar</small></span></button>
       </div>
-      <p class="secao-texto revelar">Documentos, projeto e acompanhamento. Cada sistema tem o seu próprio login.</p>
+      <div class="vitrine-cartao">
+        <div class="vitrine-topo"><span class="mono">Exemplo</span><span class="vitrine-pontos" aria-hidden="true"><i></i><i></i><i></i><i></i></span></div>
+        <div class="vitrine-paineis">
+          <div class="painel" role="tabpanel" id="painel-1" aria-labelledby="aba-1">
+            <p class="painel-titulo"># Diário · terça, 14/10</p>
+            <ul class="painel-linhas">
+              <li><span>Clima</span><span>Ensolarado, 27 °C</span></li>
+              <li><span>Equipe</span><span>8 pessoas</span></li>
+              <li><span>Serviço</span><span>Concretagem da laje</span></li>
+              <li class="ok">✓ Etapa concluída</li>
+            </ul>
+          </div>
+          <div class="painel" role="tabpanel" id="painel-2" aria-labelledby="aba-2" hidden>
+            <div class="painel-foto img" style="--img: url('assets/img/acompanhamento-fotos.jpg')"></div>
+            <p class="painel-legenda">Estrutura · 2º pavimento · 12 fotos</p>
+          </div>
+          <div class="painel" role="tabpanel" id="painel-3" aria-labelledby="aba-3" hidden>
+            <p class="painel-titulo"># Cronograma</p>
+            <ul class="painel-barras">
+              <li><span>Fundação</span><b style="--p: 100%"></b><em>100%</em></li>
+              <li><span>Estrutura</span><b style="--p: 70%"></b><em>70%</em></li>
+              <li><span>Alvenaria</span><b style="--p: 25%"></b><em>25%</em></li>
+              <li><span>Acabamento</span><b style="--p: 0%"></b><em>0%</em></li>
+            </ul>
+          </div>
+          <div class="painel" role="tabpanel" id="painel-4" aria-labelledby="aba-4" hidden>
+            <p class="painel-titulo"># Orçamento executado</p>
+            <p class="painel-numero">42<small>%</small></p>
+            <ul class="painel-linhas">
+              <li><span>Previsto até hoje</span><span>45%</span></li>
+              <li><span>Próximo vencimento</span><span>20/10</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="cartoes">
-      <a href="#" class="cartao cartao-link revelar">
-        <h3>Documentos da obra</h3>
-        <p>Contratos e documentos compartilhados.</p>
-        <span class="cartao-cta">Acessar <span aria-hidden="true">→</span></span>
+    <!-- EDITAR: links reais de acesso. -->
+    <p class="acessos">Já é cliente? <a href="#">Documentos</a> · <a href="#">Projeto</a> · <a href="#">Diário de obra</a></p>
+  </section>
+
+  <!-- FAIXAS — duas linhas rolando em sentidos opostos. EDITAR: nomes reais dos parceiros. -->
+  <section class="faixas" aria-label="O que fazemos e parcerias">
+    <div class="faixa faixa-esq">
+      <ul><li>Reforma</li><li>ART</li><li>Documentação</li><li>Projeto BIM 3D</li><li>Compatibilização</li><li>Orçamento</li><li>Cronograma</li><li>Diário de obra</li><li>Construção</li><li>Crédito MCF</li></ul>
+      <ul aria-hidden="true"><li>Reforma</li><li>ART</li><li>Documentação</li><li>Projeto BIM 3D</li><li>Compatibilização</li><li>Orçamento</li><li>Cronograma</li><li>Diário de obra</li><li>Construção</li><li>Crédito MCF</li></ul>
+    </div>
+    <div class="faixa faixa-dir">
+      <ul><li>Construtor</li><li>SP Telas</li><li>Construlux</li><li>KR Engenharia</li><li>Construtor</li><li>SP Telas</li><li>Construlux</li><li>KR Engenharia</li></ul>
+      <ul aria-hidden="true"><li>Construtor</li><li>SP Telas</li><li>Construlux</li><li>KR Engenharia</li><li>Construtor</li><li>SP Telas</li><li>Construlux</li><li>KR Engenharia</li></ul>
+    </div>
+  </section>
+
+  <!-- OBRAS EM ANDAMENTO — contador e lista. EDITAR: número real; a lista é EXEMPLO até ligar no banco. -->
+  <section class="secao" id="obras">
+    <div class="ao-vivo">
+      <div>
+        <canvas class="pixel" data-desenho="predio" aria-hidden="true"></canvas>
+        <p class="selo">Em andamento</p>
+        <h2 class="palavras grande">Obras andando agora, acompanhadas de perto.</h2>
+        <p class="cabeca-texto">Cada obra com diário, fotos e financeiro em dia — e o cliente vendo tudo.</p>
+        <p class="contador"><span data-ate="">—</span><small>obras em andamento</small></p>
+      </div>
+      <div class="tabela revelar">
+        <div class="tabela-cabeca"><span>Obra</span><span>Etapa</span><span>Status</span></div>
+        <ul class="tabela-linhas" data-rodizio>
+          <li><span><b>Residencial A</b><small>#R-0141</small></span><span>Estrutura</span><span class="st st-andando">andando</span></li>
+          <li><span><b>Reforma B</b><small>#F-0087</small></span><span>Acabamento</span><span class="st st-andando">andando</span></li>
+          <li><span><b>Escola C</b><small>#P-0032</small></span><span>Fundação</span><span class="st st-vistoria">vistoria</span></li>
+          <li><span><b>Torre D</b><small>#I-0019</small></span><span>Alvenaria</span><span class="st st-andando">andando</span></li>
+          <li><span><b>Casa E</b><small>#R-0152</small></span><span>Entrega</span><span class="st st-pronta">entregue</span></li>
+        </ul>
+        <p class="tabela-nota mono">Exemplo</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIMULADORES (isca de leads), ainda sem lógica: apontam para o contato. -->
+  <section class="secao" id="ferramentas">
+    <div class="cabeca cabeca-centro">
+      <canvas class="pixel" data-desenho="escada" aria-hidden="true"></canvas>
+      <p class="selo">Simuladores</p>
+      <h2 class="palavras">Faça as contas antes de começar.</h2>
+    </div>
+    <div class="planos" data-brilho>
+      <a href="#contato" class="plano revelar">
+        <p class="mono">Materiais</p>
+        <h3>Calculadora</h3>
+        <p class="plano-sub">Quanto comprar para a sua obra</p>
+        <ul><li>Por cômodo ou por m²</li><li>Perdas já incluídas</li><li>Lista para cotar</li></ul>
+        <span class="btn btn-contorno btn-largo">Em breve</span>
       </a>
-      <a href="#" class="cartao cartao-link revelar">
-        <h3>Projeto</h3>
-        <p>Planta e medições do seu projeto.</p>
-        <span class="cartao-cta">Acessar <span aria-hidden="true">→</span></span>
+      <a href="#contato" class="plano plano-destaque revelar">
+        <p class="mono">Crédito</p>
+        <h3>Financiamento</h3>
+        <p class="plano-sub">Quanto custaria a casa que você quer</p>
+        <ul><li>Parcela estimada</li><li>Entrada e prazo</li><li>Construtor do MCF</li><li>Resultado na hora</li></ul>
+        <span class="btn btn-escuro btn-largo">Em breve</span>
       </a>
-      <a href="#" class="cartao cartao-link revelar">
-        <h3>Acompanhamento</h3>
-        <p>Diário de obra e status atualizado.</p>
-        <span class="cartao-cta">Acessar <span aria-hidden="true">→</span></span>
+      <a href="#contato" class="plano revelar">
+        <p class="mono">Projetos</p>
+        <h3>Orçamento</h3>
+        <p class="plano-sub">Executivos e de coordenação</p>
+        <ul><li>Por área e disciplina</li><li>Prazo estimado</li><li>Proposta por e-mail</li></ul>
+        <span class="btn btn-contorno btn-largo">Em breve</span>
       </a>
     </div>
   </section>
 
-  <!-- PARCERIAS — EDITAR: nomes reais. A faixa rola sozinha; a lista é duplicada para o laço não ter emenda. -->
-  <section class="parcerias" aria-label="Parcerias">
-    <canvas class="pixel revelar" data-desenho="grade" width="80" height="80" aria-hidden="true"></canvas>
-        <p class="selo revelar">Parcerias</p>
-    <div class="faixa">
-      <ul class="faixa-trilho">
-        <li>Construtor</li><li>SP Telas</li><li>Construlux</li><li>KR Engenharia</li>
-        <li>Construtor</li><li>SP Telas</li><li>Construlux</li><li>KR Engenharia</li>
-      </ul>
-      <ul class="faixa-trilho" aria-hidden="true">
-        <li>Construtor</li><li>SP Telas</li><li>Construlux</li><li>KR Engenharia</li>
-        <li>Construtor</li><li>SP Telas</li><li>Construlux</li><li>KR Engenharia</li>
-      </ul>
+  <!-- SOBRE — EDITAR: texto real. Imagem: assets/img/sobre.jpg (retrato ou obra, 4:5). -->
+  <section class="secao" id="sobre">
+    <div class="sobre">
+      <div class="sobre-img img revelar" style="--img: url('assets/img/sobre.jpg')"></div>
+      <div>
+        <canvas class="pixel" data-desenho="predio" aria-hidden="true"></canvas>
+        <p class="selo">Sobre</p>
+        <h2 class="palavras">Engenharia com precisão, do estudo à entrega.</h2>
+        <p class="cabeca-texto">Descreva aqui, em algumas linhas, sua trajetória, especialidades e o que diferencia seu trabalho em engenharia e tecnologia aplicada à construção.</p>
+        <ul class="lista-barra">
+          <li><strong>Projetos BIM 3D</strong><span>Realistas, precisos, integrados e otimizados</span></li>
+          <li><strong>ART e documentação</strong><span>Reforma regularizada, dentro das normas</span></li>
+          <li><strong>Construtor do MCF</strong><span>Opções de crédito para a sua obra</span></li>
+        </ul>
+      </div>
     </div>
   </section>
 
+  <!-- CONTATO — imagem de fundo: assets/img/contato.jpg (presa ao pé, some em desfoque).
+       O formulário abre o e-mail da pessoa já preenchido (sem servidor). -->
   <section class="contato" id="contato">
-    <canvas class="pixel revelar" data-desenho="escada" width="80" height="80" aria-hidden="true"></canvas>
-        <p class="selo revelar">Contato</p>
-    <h2 class="revelar">Vamos tirar a sua<br /><em>obra do papel</em>?</h2>
-    <a href="mailto:contato@erikabarros.com" class="btn btn-escuro btn-grande revelar">contato@erikabarros.com</a>
+    <div class="contato-img img" style="--img: url('assets/img/contato.jpg')" aria-hidden="true"></div>
+    <div class="contato-desfoque" aria-hidden="true"></div>
+    <div class="contato-veu" aria-hidden="true"></div>
+    <div class="contato-conteudo">
+      <h2 class="palavras">Vamos tirar a sua obra do papel?</h2>
+      <p class="cabeca-texto">Conte o que você quer construir ou reformar — a gente responde com o próximo passo.</p>
+      <form class="contato-form" data-contato>
+        <label class="so-leitor" for="contato-email">Seu e-mail</label>
+        <input id="contato-email" type="email" name="email" placeholder="seu@email.com" autocomplete="email" required />
+        <button type="submit" class="btn btn-escuro">Quero conversar</button>
+      </form>
+      <p class="contato-alt">ou escreva para <a href="mailto:contato@erikabarros.com">contato@erikabarros.com</a></p>
+    </div>
   </section>
 </main>
 
 <footer class="rodape">
-  <div class="rodape-marca">
-    <img src="assets/marca/simbolo-branco.png" alt="" width="32" height="32" />
-    <span>EG Engenharia e Construção</span>
+  <div class="rodape-topo">
+    <p class="rodape-marca">EG Engenharia</p>
+    <nav class="rodape-links" aria-label="Rodapé">
+      <a href="#servicos">Serviços</a>
+      <a href="#processo">Como trabalhamos</a>
+      <a href="#acompanhamento">Acompanhamento</a>
+      <a href="#ferramentas">Simuladores</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </nav>
   </div>
-  <nav class="rodape-links" aria-label="Rodapé">
-    <a href="#servicos">Serviços</a>
-    <a href="#ferramentas">Simuladores</a>
-    <a href="#area-cliente">Área do Cliente</a>
-    <a href="#contato">Contato</a>
-  </nav>
-  <p class="rodape-copy">&copy; <span id="ano">2026</span> EG Engenharia e Construção.</p>
+  <p class="rodape-copy">&copy; <span id="ano">2026</span> EG Engenharia e Construção. Todos os direitos reservados.</p>
 </footer>
 
 <script src="site.js"></script>

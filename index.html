@@ -4,146 +4,230 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>EG Engenharia e Construção</title>
-<meta name="description" content="Soluções inteligentes e personalizadas para a sua obra, reforma ou projeto: ART e documentação, projetos BIM 3D, construção e crédito para sua obra." />
+<meta name="description" content="Reforma, projeto BIM, obra e crédito para construir: engenharia com precisão do primeiro estudo à entrega das chaves." />
+<meta name="theme-color" content="#f4efe9" />
 <link rel="icon" type="image/png" href="assets/marca/simbolo-cor.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" />
 <link rel="stylesheet" href="style.css" />
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
-<header class="topbar">
-  <a href="./" class="brand">
-    <img src="assets/marca/simbolo-preto.png" alt="EG Engenharia e Construção" class="brand-mark" />
-    <span class="brand-name">EG Engenharia e Construção</span>
+<!-- Abertura: as letras da marca entram desfocadas e saem. Uma vez por sessão; some com movimento reduzido. -->
+<div class="intro" aria-hidden="true">
+  <div class="intro-marca">
+    <span>E</span><span>G</span><span class="intro-sep"></span><span>E</span><span>N</span><span>G</span><span>E</span><span>N</span><span>H</span><span>A</span><span>R</span><span>I</span><span>A</span>
+  </div>
+</div>
+
+<header class="nav" id="topo">
+  <a href="#inicio" class="nav-marca">
+    <img src="assets/marca/simbolo-preto.png" alt="" width="28" height="28" />
+    <span>EG Engenharia</span>
   </a>
-  <nav>
-    <a href="#ferramentas">Ferramentas</a>
+  <nav class="nav-links" id="menu" aria-label="Principal">
+    <a href="#servicos">Serviços</a>
+    <a href="#processo">Como trabalhamos</a>
+    <a href="#ferramentas">Simuladores</a>
     <a href="#sobre">Sobre</a>
     <a href="#area-cliente">Área do Cliente</a>
-    <a href="#sistemas">Sistemas</a>
-    <a href="#contato">Contato</a>
   </nav>
+  <a href="#contato" class="btn btn-escuro nav-cta">Fale conosco</a>
+  <button class="nav-abrir" aria-controls="menu" aria-expanded="false" aria-label="Abrir menu">
+    <span></span><span></span>
+  </button>
 </header>
 
 <main>
-  <section class="hero">
-    <p class="eyebrow">Tecnologia e Engenharia</p>
-    <h1>A confiança que você precisa com a <em>excelência</em> que você merece</h1>
-    <p class="subtitle">Soluções inteligentes e personalizadas para a sua obra, reforma ou projeto.</p>
-    <a href="#contato" class="btn-primary">Entre em Contato</a>
-  </section>
-
-  <section class="servicos">
-    <div class="servico-card">
-      <h3>Sua Reforma</h3>
-      <p>ART e documentação para sua reforma completa.</p>
+  <!-- HERO — imagem: assets/img/hero.jpg (render ou foto de obra, horizontal, ≥2400px).
+       Vídeo opcional por cima: assets/video/hero.mp4 (sem som, em loop, 10–20 s, até ~6 MB).
+       Sem o arquivo, ou com movimento reduzido / economia de dados, fica só a imagem. -->
+  <section class="hero" id="inicio">
+    <div class="hero-img img" style="--img: url('assets/img/hero.jpg')" role="img" aria-label="Projeto da EG Engenharia">
+      <video class="hero-video" data-src="assets/video/hero.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
     </div>
-    <div class="servico-card">
-      <h3>Seu Projeto</h3>
-      <p>Projetos BIM 3D: realistas, precisos, integrados e otimizados.</p>
-    </div>
-    <div class="servico-card">
-      <h3>Sua Obra</h3>
-      <p>Construímos desde a concepção até a entrega das chaves.</p>
-    </div>
-    <div class="servico-card">
-      <h3>Seu Crédito</h3>
-      <p>Como construtor do MCF, oferecemos opções de crédito para sua obra.</p>
+    <div class="hero-conteudo">
+      <p class="selo revelar">Tecnologia e Engenharia</p>
+      <h1 class="revelar">A confiança que você precisa com a <em>excelência</em> que você merece.</h1>
+      <p class="hero-sub revelar">Reforma, projeto BIM, obra e crédito para construir — do primeiro estudo à entrega das chaves.</p>
+      <div class="hero-acoes revelar">
+        <a href="#contato" class="btn btn-escuro">Entre em contato</a>
+        <a href="#servicos" class="btn btn-vidro">Ver serviços</a>
+      </div>
+      <!-- EDITAR: números reais. data-falta marca o que ainda não foi informado. -->
+      <dl class="numeros revelar">
+        <div><dt>Obras entregues</dt><dd data-falta>—</dd></div>
+        <div><dt>m² projetados</dt><dd data-falta>—</dd></div>
+        <div><dt>Anos de mercado</dt><dd data-falta>—</dd></div>
+      </dl>
     </div>
   </section>
 
-  <!-- Simuladores (isca de leads), ainda sem lógica: apontam para o contato. -->
-  <section id="ferramentas" class="ferramentas">
-    <h2>Ferramentas</h2>
-    <p class="section-hint">Orçamentos, estimativas e financiamento — conheça e utilize nossos simuladores online.</p>
-    <div class="grid">
-      <a href="#contato" class="card">
-        <div class="card-icon">🧮</div>
-        <h3>Calculadora de Materiais</h3>
-        <p>Saiba quanto comprar de material para sua obra com nossa calculadora.</p>
-        <span class="card-cta">Acessar →</span>
+  <!-- SERVIÇOS — imagens: assets/img/servico-reforma.jpg, -projeto.jpg, -obra.jpg, -credito.jpg (verticais 4:5) -->
+  <section class="secao" id="servicos">
+    <div class="secao-cabeca">
+      <p class="selo revelar">Serviços</p>
+      <h2 class="revelar">Da documentação<br />às chaves na mão.</h2>
+    </div>
+    <div class="servicos">
+      <article class="servico revelar">
+        <div class="servico-img img" style="--img: url('assets/img/servico-reforma.jpg')"></div>
+        <div class="servico-texto">
+          <p class="servico-rotulo">Reforma</p>
+          <h3>Sua reforma</h3>
+          <p>ART e documentação para a sua reforma completa, dentro das normas.</p>
+        </div>
+      </article>
+      <article class="servico revelar">
+        <div class="servico-img img" style="--img: url('assets/img/servico-projeto.jpg')"></div>
+        <div class="servico-texto">
+          <p class="servico-rotulo">Projeto</p>
+          <h3>Seu projeto</h3>
+          <p>Projetos BIM 3D realistas, precisos, integrados e otimizados.</p>
+        </div>
+      </article>
+      <article class="servico revelar">
+        <div class="servico-img img" style="--img: url('assets/img/servico-obra.jpg')"></div>
+        <div class="servico-texto">
+          <p class="servico-rotulo">Obra</p>
+          <h3>Sua obra</h3>
+          <p>Construímos desde a concepção até a entrega das chaves.</p>
+        </div>
+      </article>
+      <article class="servico revelar">
+        <div class="servico-img img" style="--img: url('assets/img/servico-credito.jpg')"></div>
+        <div class="servico-texto">
+          <p class="servico-rotulo">Crédito</p>
+          <h3>Seu crédito</h3>
+          <p>Como construtor do MCF, oferecemos opções de crédito para a sua obra.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- COMO TRABALHAMOS — EDITAR: texto proposto, a revisar. -->
+  <section class="secao secao-clara" id="processo">
+    <div class="secao-cabeca">
+      <p class="selo revelar">Como trabalhamos</p>
+      <h2 class="revelar">Da ideia à obra pronta<br />em quatro etapas.</h2>
+    </div>
+    <ol class="etapas">
+      <li class="revelar"><span class="etapa-n">01</span><h3>Diagnóstico</h3><p>Entendemos o que você quer, o terreno ou imóvel, o prazo e o orçamento.</p></li>
+      <li class="revelar"><span class="etapa-n">02</span><h3>Projeto</h3><p>Modelo BIM 3D com quantidades e custos antes do primeiro tijolo.</p></li>
+      <li class="revelar"><span class="etapa-n">03</span><h3>Obra</h3><p>Execução com diário de obra, cronograma e orçamento acompanhados.</p></li>
+      <li class="revelar"><span class="etapa-n">04</span><h3>Entrega</h3><p>Documentação, vistoria e as chaves na sua mão.</p></li>
+    </ol>
+  </section>
+
+  <!-- SIMULADORES (isca de leads), ainda sem lógica: apontam para o contato. -->
+  <section class="secao" id="ferramentas">
+    <div class="secao-cabeca secao-cabeca-lado">
+      <div>
+        <p class="selo revelar">Simuladores</p>
+        <h2 class="revelar">Faça as contas<br />antes de começar.</h2>
+      </div>
+      <p class="secao-texto revelar">Orçamentos, estimativas e financiamento — conheça nossos simuladores online.</p>
+    </div>
+    <div class="cartoes">
+      <a href="#contato" class="cartao revelar">
+        <span class="cartao-n">01</span>
+        <h3>Calculadora de materiais</h3>
+        <p>Saiba quanto comprar de material para a sua obra.</p>
+        <span class="cartao-cta">Em breve <span aria-hidden="true">→</span></span>
       </a>
-      <a href="#contato" class="card">
-        <div class="card-icon">📐</div>
-        <h3>Orçamento de Projetos</h3>
-        <p>Receba uma estimativa de custos para projetos executivos e de coordenação.</p>
-        <span class="card-cta">Acessar →</span>
+      <a href="#contato" class="cartao revelar">
+        <span class="cartao-n">02</span>
+        <h3>Orçamento de projetos</h3>
+        <p>Estimativa de custos para projetos executivos e de coordenação.</p>
+        <span class="cartao-cta">Em breve <span aria-hidden="true">→</span></span>
       </a>
-      <a href="#contato" class="card">
-        <div class="card-icon">🏠</div>
-        <h3>Construção Financiada</h3>
-        <p>Saiba quanto custaria a casa que você deseja em poucos cliques.</p>
-        <span class="card-cta">Acessar →</span>
+      <a href="#contato" class="cartao revelar">
+        <span class="cartao-n">03</span>
+        <h3>Construção financiada</h3>
+        <p>Quanto custaria a casa que você deseja, em poucos cliques.</p>
+        <span class="cartao-cta">Em breve <span aria-hidden="true">→</span></span>
       </a>
     </div>
   </section>
 
-  <!-- EDITAR: texto real do "Sobre". -->
-  <section id="sobre" class="sobre">
-    <h2>Sobre</h2>
-    <p>Descreva aqui, em algumas linhas, sua trajetória, especialidades e o que diferencia seu trabalho em engenharia e tecnologia aplicada à construção.</p>
+  <!-- SOBRE — EDITAR: texto real. Imagem: assets/img/sobre.jpg (retrato ou obra, vertical) -->
+  <section class="secao secao-escura" id="sobre">
+    <div class="sobre">
+      <div class="sobre-img img revelar" style="--img: url('assets/img/sobre.jpg')"></div>
+      <div class="sobre-texto">
+        <p class="selo selo-escuro revelar">Sobre</p>
+        <h2 class="revelar">Engenharia com precisão, <em>do estudo à entrega</em>.</h2>
+        <p class="revelar">Descreva aqui, em algumas linhas, sua trajetória, especialidades e o que diferencia seu trabalho em engenharia e tecnologia aplicada à construção.</p>
+      </div>
+    </div>
   </section>
 
-  <!-- EDITAR: links reais (pastas do Google Drive, MagicPlan, diário de obra). -->
-  <section id="area-cliente" class="area-cliente">
-    <h2>Área do Cliente</h2>
-    <p class="section-hint">Documentos, projetos e acompanhamento da sua obra em um só lugar.</p>
-    <div class="grid">
-      <a href="#" class="card">
-        <div class="card-icon">📁</div>
-        <h3>Documentos da Obra</h3>
-        <p>Pasta compartilhada no Google Drive com contratos e documentos.</p>
-        <span class="card-cta">Acessar →</span>
+  <!-- ÁREA DO CLIENTE e SISTEMAS — EDITAR: links reais. -->
+  <section class="secao" id="area-cliente">
+    <div class="secao-cabeca secao-cabeca-lado">
+      <div>
+        <p class="selo revelar">Área do Cliente</p>
+        <h2 class="revelar">Sua obra<br />em um só lugar.</h2>
+      </div>
+      <p class="secao-texto revelar">Documentos, projeto e acompanhamento. Cada sistema tem o seu próprio login.</p>
+    </div>
+    <div class="cartoes">
+      <a href="#" class="cartao cartao-link revelar">
+        <h3>Documentos da obra</h3>
+        <p>Contratos e documentos compartilhados.</p>
+        <span class="cartao-cta">Acessar <span aria-hidden="true">→</span></span>
       </a>
-      <a href="#" class="card">
-        <div class="card-icon">📏</div>
-        <h3>Projeto (MagicPlan)</h3>
+      <a href="#" class="cartao cartao-link revelar">
+        <h3>Projeto</h3>
         <p>Planta e medições do seu projeto.</p>
-        <span class="card-cta">Acessar →</span>
+        <span class="cartao-cta">Acessar <span aria-hidden="true">→</span></span>
       </a>
-      <a href="#" class="card">
-        <div class="card-icon">🗂️</div>
-        <h3>Acompanhamento da Obra</h3>
-        <p>Diário de obras e status atualizado.</p>
-        <span class="card-cta">Acessar →</span>
+      <a href="#" class="cartao cartao-link revelar">
+        <h3>Acompanhamento</h3>
+        <p>Diário de obra e status atualizado.</p>
+        <span class="cartao-cta">Acessar <span aria-hidden="true">→</span></span>
       </a>
     </div>
   </section>
 
-  <!-- Um cartão por sistema publicado, cada um com login próprio. -->
-  <section id="sistemas" class="sistemas">
-    <h2>Meus Sistemas</h2>
-    <p class="section-hint">Escolha um sistema abaixo para acessar. Cada sistema tem seu próprio login.</p>
-    <div class="grid">
-      <p class="grid-vazio">Em breve.</p>
+  <!-- PARCERIAS — EDITAR: nomes reais. A faixa rola sozinha; a lista é duplicada para o laço não ter emenda. -->
+  <section class="parcerias" aria-label="Parcerias">
+    <p class="selo revelar">Parcerias</p>
+    <div class="faixa">
+      <ul class="faixa-trilho">
+        <li>Construtor</li><li>SP Telas</li><li>Construlux</li><li>KR Engenharia</li>
+        <li>Construtor</li><li>SP Telas</li><li>Construlux</li><li>KR Engenharia</li>
+      </ul>
+      <ul class="faixa-trilho" aria-hidden="true">
+        <li>Construtor</li><li>SP Telas</li><li>Construlux</li><li>KR Engenharia</li>
+        <li>Construtor</li><li>SP Telas</li><li>Construlux</li><li>KR Engenharia</li>
+      </ul>
     </div>
   </section>
 
-  <!-- EDITAR: nomes reais dos parceiros. -->
-  <section class="parcerias">
-    <h2>Parcerias</h2>
-    <div class="parcerias-list">
-      <span class="parceiro">Construtor</span>
-      <span class="parceiro">SP Telas</span>
-      <span class="parceiro">Construlux</span>
-      <span class="parceiro">KR Engenharia</span>
-    </div>
-  </section>
-
-  <!-- Redes sociais: acrescentar <a class="social-icon"> dentro de .social-list quando houver links. -->
-  <section id="contato" class="contato">
-    <h2>Contato</h2>
-    <p>Email: <a href="mailto:contato@erikabarros.com">contato@erikabarros.com</a></p>
-    <div class="social-list"></div>
+  <section class="contato" id="contato">
+    <p class="selo revelar">Contato</p>
+    <h2 class="revelar">Vamos tirar a sua<br /><em>obra do papel</em>?</h2>
+    <a href="mailto:contato@erikabarros.com" class="btn btn-escuro btn-grande revelar">contato@erikabarros.com</a>
   </section>
 </main>
 
-<footer>
-  <p>&copy; <span id="ano">2026</span> EG Engenharia e Construção. Todos os direitos reservados.</p>
+<footer class="rodape">
+  <div class="rodape-marca">
+    <img src="assets/marca/simbolo-branco.png" alt="" width="32" height="32" />
+    <span>EG Engenharia e Construção</span>
+  </div>
+  <nav class="rodape-links" aria-label="Rodapé">
+    <a href="#servicos">Serviços</a>
+    <a href="#ferramentas">Simuladores</a>
+    <a href="#area-cliente">Área do Cliente</a>
+    <a href="#contato">Contato</a>
+  </nav>
+  <p class="rodape-copy">&copy; <span id="ano">2026</span> EG Engenharia e Construção.</p>
 </footer>
 
-<script>document.getElementById('ano').textContent = new Date().getFullYear();</script>
+<script src="site.js"></script>
 </body>
 </html>

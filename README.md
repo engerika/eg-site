@@ -29,6 +29,7 @@ Basta salvar com o nome certo; não precisa mexer no código.
 | `assets/img/servico-projeto.jpg` | cartão Projeto | vertical 4:5 |
 | `assets/img/servico-obra.jpg` | cartão Obra | vertical 4:5 |
 | `assets/img/servico-credito.jpg` | cartão Crédito | vertical 4:5 |
+| `assets/img/etapa-01.jpg` … `etapa-04.jpg` | cartões de Como trabalhamos | horizontal ou quadrada; o pé some no branco |
 | `assets/img/sobre.jpg` | bloco Sobre | vertical 4:5 |
 
 JPG até ~400 KB cada (o GitHub Pages não comprime). O vídeo não carrega para

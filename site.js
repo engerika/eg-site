@@ -76,6 +76,77 @@
     recuar();
   }
 
+  // Ícones de pixels: grade 10×10 animada a ~8 quadros/s, cada seção com um desenho
+  // de obra (prédio subindo, escada, grade, planta). Parado fora da tela; com
+  // movimento reduzido, mostra só o quadro final.
+  var desenhos = {
+    // prédio: colunas de alturas diferentes acendendo de baixo para cima
+    predio: function (t) {
+      var alturas = [0, 6, 6, 9, 9, 9, 7, 7, 4, 0], h = t % 14;
+      return function (x, y) {
+        var linha = 9 - y;
+        if (linha >= alturas[x] || linha > h) return 0;
+        return (linha === h || (x % 2 && y % 2 && (x + y + t) % 5 === 0)) ? 2 : 1;
+      };
+    },
+    // escada: degraus acendendo em diagonal
+    escada: function (t) {
+      var passo = t % 12;
+      return function (x, y) {
+        var degrau = Math.floor(x / 2);
+        if (9 - y > degrau * 2 + 1 || degrau > passo) return 0;
+        return degrau === passo ? 2 : 1;
+      };
+    },
+    // grade: onda atravessando a matriz de pontos
+    grade: function (t) {
+      return function (x, y) {
+        var d = Math.abs(((x + y) - t % 22) );
+        return d === 0 ? 2 : d < 3 ? 1 : 0;
+      };
+    },
+    // planta: contorno percorrido e uma parede interna
+    planta: function (t) {
+      var borda = [];
+      for (var i = 1; i < 9; i++) borda.push([i, 1]);
+      for (i = 2; i < 9; i++) borda.push([8, i]);
+      for (i = 7; i > 0; i--) borda.push([i, 8]);
+      for (i = 7; i > 1; i--) borda.push([1, i]);
+      for (i = 2; i < 6; i++) borda.push([5, i]);
+      var n = t % (borda.length + 8);
+      return function (x, y) {
+        for (var k = 0; k < Math.min(n, borda.length); k++) {
+          if (borda[k][0] === x && borda[k][1] === y) return k === n - 1 ? 2 : 1;
+        }
+        return 0;
+      };
+    }
+  };
+  var semMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('canvas.pixel').forEach(function (tela) {
+    var ctx = tela.getContext('2d');
+    var desenho = desenhos[tela.dataset.desenho] || desenhos.grade;
+    var escuro = !!tela.closest('.secao-escura');
+    var cores = escuro
+      ? ['rgba(255,255,255,.10)', 'rgba(255,255,255,.85)', '#e6a87d']
+      : ['rgba(42,27,20,.08)', '#2a1b14', '#cd6543'];
+    var t = 0, relogio = null;
+    function quadro() {
+      var f = desenho(t++);
+      ctx.clearRect(0, 0, 80, 80);
+      for (var y = 0; y < 10; y++) for (var x = 0; x < 10; x++) {
+        ctx.fillStyle = cores[f(x, y)];
+        ctx.fillRect(x * 8 + 1, y * 8 + 1, 6, 6);
+      }
+    }
+    if (semMovimento) { t = 9; quadro(); return; }
+    quadro();
+    new IntersectionObserver(function (en) {
+      if (en[0].isIntersecting && !relogio) relogio = setInterval(quadro, 125);
+      if (!en[0].isIntersecting && relogio) { clearInterval(relogio); relogio = null; }
+    }).observe(tela);
+  });
+
   // Vídeo do hero: só carrega se existir e se a pessoa não pediu menos movimento ou
   // economia de dados; aparece com fade quando começa a tocar e pausa fora da tela.
   var video = document.querySelector('.hero-video');

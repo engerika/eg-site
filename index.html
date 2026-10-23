@@ -69,7 +69,8 @@
   <!-- SERVIÇOS — imagens: assets/img/servico-reforma.jpg, -projeto.jpg, -obra.jpg, -credito.jpg (verticais 4:5) -->
   <section class="secao" id="servicos">
     <div class="secao-cabeca">
-      <p class="selo revelar">Serviços</p>
+      <canvas class="pixel revelar" data-desenho="predio" width="80" height="80" aria-hidden="true"></canvas>
+        <p class="selo revelar">Serviços</p>
       <h2 class="revelar">Da documentação<br />às chaves na mão.</h2>
     </div>
     <div class="servicos">
@@ -111,14 +112,32 @@
   <!-- COMO TRABALHAMOS — EDITAR: texto proposto, a revisar. -->
   <section class="secao secao-clara" id="processo">
     <div class="secao-cabeca">
-      <p class="selo revelar">Como trabalhamos</p>
+      <canvas class="pixel revelar" data-desenho="escada" width="80" height="80" aria-hidden="true"></canvas>
+        <p class="selo revelar">Como trabalhamos</p>
       <h2 class="revelar">Da ideia à obra pronta<br />em quatro etapas.</h2>
     </div>
+    <!-- Imagens: assets/img/etapa-01.jpg … etapa-04.jpg (quadradas ou horizontais). -->
     <ol class="etapas">
-      <li class="revelar"><span class="etapa-n">01</span><h3>Diagnóstico</h3><p>Entendemos o que você quer, o terreno ou imóvel, o prazo e o orçamento.</p></li>
-      <li class="revelar"><span class="etapa-n">02</span><h3>Projeto</h3><p>Modelo BIM 3D com quantidades e custos antes do primeiro tijolo.</p></li>
-      <li class="revelar"><span class="etapa-n">03</span><h3>Obra</h3><p>Execução com diário de obra, cronograma e orçamento acompanhados.</p></li>
-      <li class="revelar"><span class="etapa-n">04</span><h3>Entrega</h3><p>Documentação, vistoria e as chaves na sua mão.</p></li>
+      <li class="etapa revelar">
+        <div class="etapa-img img" style="--img: url('assets/img/etapa-01.jpg')"></div>
+        <span class="etapa-n">01</span>
+        <div class="etapa-texto"><h3>Diagnóstico</h3><p>Entendemos o que você quer, o terreno ou imóvel, o prazo e o orçamento.</p></div>
+      </li>
+      <li class="etapa revelar">
+        <div class="etapa-img img" style="--img: url('assets/img/etapa-02.jpg')"></div>
+        <span class="etapa-n">02</span>
+        <div class="etapa-texto"><h3>Projeto</h3><p>Modelo BIM 3D com quantidades e custos antes do primeiro tijolo.</p></div>
+      </li>
+      <li class="etapa revelar">
+        <div class="etapa-img img" style="--img: url('assets/img/etapa-03.jpg')"></div>
+        <span class="etapa-n">03</span>
+        <div class="etapa-texto"><h3>Obra</h3><p>Execução com diário de obra, cronograma e orçamento acompanhados.</p></div>
+      </li>
+      <li class="etapa revelar">
+        <div class="etapa-img img" style="--img: url('assets/img/etapa-04.jpg')"></div>
+        <span class="etapa-n">04</span>
+        <div class="etapa-texto"><h3>Entrega</h3><p>Documentação, vistoria e as chaves na sua mão.</p></div>
+      </li>
     </ol>
   </section>
 
@@ -126,6 +145,7 @@
   <section class="secao" id="ferramentas">
     <div class="secao-cabeca secao-cabeca-lado">
       <div>
+        <canvas class="pixel revelar" data-desenho="grade" width="80" height="80" aria-hidden="true"></canvas>
         <p class="selo revelar">Simuladores</p>
         <h2 class="revelar">Faça as contas<br />antes de começar.</h2>
       </div>
@@ -158,9 +178,15 @@
     <div class="sobre">
       <div class="sobre-img img revelar" style="--img: url('assets/img/sobre.jpg')"></div>
       <div class="sobre-texto">
+        <canvas class="pixel revelar" data-desenho="predio" width="80" height="80" aria-hidden="true"></canvas>
         <p class="selo selo-escuro revelar">Sobre</p>
         <h2 class="revelar">Engenharia com precisão, <em>do estudo à entrega</em>.</h2>
         <p class="revelar">Descreva aqui, em algumas linhas, sua trajetória, especialidades e o que diferencia seu trabalho em engenharia e tecnologia aplicada à construção.</p>
+        <ul class="lista-barra">
+          <li class="revelar"><strong>Projetos BIM 3D</strong><span>Realistas, precisos, integrados e otimizados.</span></li>
+          <li class="revelar"><strong>ART e documentação</strong><span>Reforma regularizada, dentro das normas.</span></li>
+          <li class="revelar"><strong>Construtor do MCF</strong><span>Opções de crédito para a sua obra.</span></li>
+        </ul>
       </div>
     </div>
   </section>
@@ -169,6 +195,7 @@
   <section class="secao" id="area-cliente">
     <div class="secao-cabeca secao-cabeca-lado">
       <div>
+        <canvas class="pixel revelar" data-desenho="planta" width="80" height="80" aria-hidden="true"></canvas>
         <p class="selo revelar">Área do Cliente</p>
         <h2 class="revelar">Sua obra<br />em um só lugar.</h2>
       </div>
@@ -195,7 +222,8 @@
 
   <!-- PARCERIAS — EDITAR: nomes reais. A faixa rola sozinha; a lista é duplicada para o laço não ter emenda. -->
   <section class="parcerias" aria-label="Parcerias">
-    <p class="selo revelar">Parcerias</p>
+    <canvas class="pixel revelar" data-desenho="grade" width="80" height="80" aria-hidden="true"></canvas>
+        <p class="selo revelar">Parcerias</p>
     <div class="faixa">
       <ul class="faixa-trilho">
         <li>Construtor</li><li>SP Telas</li><li>Construlux</li><li>KR Engenharia</li>
@@ -209,7 +237,8 @@
   </section>
 
   <section class="contato" id="contato">
-    <p class="selo revelar">Contato</p>
+    <canvas class="pixel revelar" data-desenho="escada" width="80" height="80" aria-hidden="true"></canvas>
+        <p class="selo revelar">Contato</p>
     <h2 class="revelar">Vamos tirar a sua<br /><em>obra do papel</em>?</h2>
     <a href="mailto:contato@erikabarros.com" class="btn btn-escuro btn-grande revelar">contato@erikabarros.com</a>
   </section>

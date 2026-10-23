@@ -54,6 +54,28 @@
     itens.forEach(function (el) { obs.observe(el); });
   }
 
+  // Serviços empilhando: cada cartão gruda um pouco abaixo do anterior (--n),
+  // e o de trás recua (--recuo, 0 a 1) à medida que o próximo o cobre.
+  var cartoes = Array.prototype.slice.call(document.querySelectorAll('.servico'));
+  cartoes.forEach(function (c, i) { c.style.setProperty('--n', i); });
+  if (cartoes.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var pedido = false;
+    function recuar() {
+      pedido = false;
+      for (var i = 0; i < cartoes.length - 1; i++) {
+        var atual = cartoes[i].getBoundingClientRect();
+        var proximo = cartoes[i + 1].getBoundingClientRect();
+        var p = 1 - (proximo.top - atual.top) / atual.height;
+        cartoes[i].style.setProperty('--recuo', Math.max(0, Math.min(1, p)).toFixed(3));
+      }
+    }
+    window.addEventListener('scroll', function () {
+      if (!pedido) { pedido = true; requestAnimationFrame(recuar); }
+    }, { passive: true });
+    window.addEventListener('resize', recuar);
+    recuar();
+  }
+
   // Vídeo do hero: só carrega se existir e se a pessoa não pediu menos movimento ou
   // economia de dados; aparece com fade quando começa a tocar e pausa fora da tela.
   var video = document.querySelector('.hero-video');

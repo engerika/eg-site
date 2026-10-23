@@ -2,8 +2,8 @@
 
 Site estático de `egenharia.com.br`, publicado pelo GitHub Pages. Substitui o
 tema WordPress [`eg-tema-erika-barros`](https://github.com/engerika/eg-tema-erika-barros),
-que rodava na VPS: mesmo conteúdo e mesmo visual, sem servidor, sem banco e sem
-assinatura.
+que rodava na VPS: sem servidor, sem banco e sem assinatura. O visual segue
+o brief cinematográfico da marca (`projetodesign/brief-landing-cinematografica.md`).
 
 ## Arquivos
 
